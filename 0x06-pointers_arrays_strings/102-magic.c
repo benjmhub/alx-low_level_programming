@@ -7,13 +7,14 @@
  */
 int main(void)
 {
-	int a[5] = {98, 198, 298, 398, 498};
-	int *p = &a[2];
+	int a[5] = {0, 1, 2, 3, 4};
+	int *p = a + 2;
 
-	/* Add your code here */
-	p = p - 2;
+	p[-1] = 98; /* Added line */
 
-	printf("a[2] = %d\n", *(p + 2));
+	/* Print array elements */
+	printf("a[2] = %d\n", a[2]);
+
 	return (0);
 }
 
