@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * str_concat - Concatenates two strings.
@@ -10,36 +11,36 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
+    int len1 = 0, len2 = 0, i, j;
+    char *concat_str;
 
-	/* Calculate the lengths of both strings */
-	int len1 = 0, len2 = 0;
-	while (s1[len1] != '\0')
-		len1++;
-	while (s2[len2] != '\0')
-		len2++;
+    if (s1 == NULL)
+        s1 = "";
+    if (s2 == NULL)
+        s2 = "";
 
-	/* Allocate memory for the concatenated string (+1 for null terminator) */
-	char *concat_str = (char *)malloc((len1 + len2 + 1) * sizeof(char));
-	if (concat_str == NULL)
-		return (NULL);
+    /* Calculate the lengths of both strings */
+    while (s1[len1] != '\0')
+        len1++;
+    while (s2[len2] != '\0')
+        len2++;
 
-	/* Copy the first string into the new memory */
-	int i;
-	for (i = 0; i < len1; i++)
-		concat_str[i] = s1[i];
+    /* Allocate memory for the concatenated string (+1 for null terminator) */
+    concat_str = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+    if (concat_str == NULL)
+        return (NULL);
 
-	/* Append the second string after the first one */
-	int j;
-	for (j = 0; j < len2; j++)
-		concat_str[i + j] = s2[j];
+    /* Copy the first string into the new memory */
+    for (i = 0; i < len1; i++)
+        concat_str[i] = s1[i];
 
-	/* Null-terminate the concatenated string */
-	concat_str[i + j] = '\0';
+    /* Append the second string after the first one */
+    for (j = 0; j < len2; j++)
+        concat_str[i + j] = s2[j];
 
-	return (concat_str);
+    /* Null-terminate the concatenated string */
+    concat_str[i + j] = '\0';
+
+    return (concat_str);
 }
 
